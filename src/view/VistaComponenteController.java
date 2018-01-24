@@ -103,6 +103,14 @@ public class VistaComponenteController {
   
         }
     }
+    @FXML
+    private void crearComponente(){
+        Componente temporal = new Componente();
+        gestorInventario.muestraNuevo(temporal);
+        gestorInventario.getDatosComponente().add(temporal);
+        
+        
+    }
     
     
     
