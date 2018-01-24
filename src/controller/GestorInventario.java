@@ -35,7 +35,7 @@ public class GestorInventario extends Application {
     private Stage escenarioPrincipal;
     private BorderPane layoutPrincipal;
     private AnchorPane vistaInventario;
-    private AnchorPane vistaDetalle;
+    private AnchorPane vistaDetalle, vistaNuevo;
 
     public GestorInventario() {
 
@@ -120,6 +120,25 @@ public class GestorInventario extends Application {
         escenarioDetalle.showAndWait();
 
     }
+     
+    public void muestraNuevo(Componente componente){
+         FXMLLoader loader = new FXMLLoader();
+        URL location = GestorInventario.class.getResource("../view/VistaNuevo.fxml");
+        loader.setLocation(location);
+          try {
+            vistaNuevo = loader.load();
+        } catch (IOException ex) {
+
+        }
+         Stage escenarioNuevo = new Stage();
+        escenarioNuevo.setTitle("Detalles");
+        escenarioNuevo.initModality(Modality.WINDOW_MODAL);
+        escenarioNuevo.initOwner(escenarioPrincipal);
+        Scene escena = new Scene(vistaNuevo);
+        escenarioNuevo.setScene(escena); 
+        escenarioNuevo.showAndWait();
+    } 
+     
     
     
 
