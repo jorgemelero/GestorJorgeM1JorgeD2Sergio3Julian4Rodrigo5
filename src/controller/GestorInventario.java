@@ -19,9 +19,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Componente;
 import view.VistaComponenteController;
+import view.VistaDetalleController;
 
 /**
  *
@@ -33,10 +35,11 @@ public class GestorInventario extends Application {
     private Stage escenarioPrincipal;
     private BorderPane layoutPrincipal;
     private AnchorPane vistaInventario;
+    private AnchorPane vistaDetalle;
 
     public GestorInventario() {
 
-         //datosComponente.add(new Componente(new ImageView("../img/gtx1080.jpg"), "Tarjeta grafica","500","20"));
+         //datosComponente.add(new Componente(new ImageView("file:/img/gtx1080.jpg"), "Tarjeta grafica","500","20"));
           datosComponente.add(new Componente("Foto1", "Caja", "50", "50"));
           datosComponente.add(new Componente("Foto2", "Placa base", "150", "75"));
           datosComponente.add(new Componente("Foto3", "Memoria ram", "100", "60"));
@@ -93,6 +96,32 @@ public class GestorInventario extends Application {
         controller.setGestorInventario(this);
 
     }
+    
+     public void muestraDetalle(Componente componente) {
+        FXMLLoader loader = new FXMLLoader();
+        URL location = GestorInventario.class.getResource("../view/VistaDetalle.fxml");
+        loader.setLocation(location);
+        try {
+            vistaDetalle = loader.load();
+        } catch (IOException ex) {
+
+        }
+        Stage escenarioDetalle = new Stage();
+        escenarioDetalle.setTitle("Detalles");
+        escenarioDetalle.initModality(Modality.WINDOW_MODAL);
+        escenarioDetalle.initOwner(escenarioPrincipal);
+        Scene escena = new Scene(vistaDetalle);
+        escenarioDetalle.setScene(escena);
+        
+
+        VistaDetalleController controller = loader.getController();
+        controller.setEscenarioDetalle(escenarioDetalle);
+        controller.setComponente(componente);
+        escenarioDetalle.showAndWait();
+
+    }
+    
+    
 
     public Stage getPrimaryStage() {
         return escenarioPrincipal;
