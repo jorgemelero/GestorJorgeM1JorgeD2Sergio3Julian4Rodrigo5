@@ -24,6 +24,10 @@ public class Componente {
     private final StringProperty nombre;
     private final StringProperty precio;
     private final StringProperty stock;
+    
+    public Componente(){
+        this(null,null,null,null);
+    }
 
     public Componente(String foto, String nombre, String precio, String stock) {
         //this.foto = foto;
