@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import modelo.Componente;
 import view.VistaComponenteController;
 import view.VistaDetalleController;
+import view.VistaNuevoController;
 
 /**
  *
@@ -39,7 +40,7 @@ public class GestorInventario extends Application {
 
     public GestorInventario() {
 
-         //datosComponente.add(new Componente(new ImageView("file:/img/gtx1080.jpg"), "Tarjeta grafica","500","20"));
+          //datosComponente.add(new Componente(new ImageView("file:/img/gtx1080.jpg"), "Tarjeta grafica","500","20"));
           datosComponente.add(new Componente("Foto1", "Caja", "50", "50"));
           datosComponente.add(new Componente("Foto2", "Placa base", "150", "75"));
           datosComponente.add(new Componente("Foto3", "Memoria ram", "100", "60"));
@@ -130,12 +131,15 @@ public class GestorInventario extends Application {
         } catch (IOException ex) {
 
         }
-         Stage escenarioNuevo = new Stage();
+        Stage escenarioNuevo = new Stage();
         escenarioNuevo.setTitle("Nuevo");
         escenarioNuevo.initModality(Modality.WINDOW_MODAL);
         escenarioNuevo.initOwner(escenarioPrincipal);
         Scene escena = new Scene(vistaNuevo);
         escenarioNuevo.setScene(escena); 
+        
+        VistaNuevoController controller = loader.getController();
+        controller.setEscenarioNuevo(escenarioNuevo);
         escenarioNuevo.showAndWait();
     } 
      
