@@ -8,6 +8,7 @@ package view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import modelo.Componente;
 
 /**
@@ -25,27 +26,45 @@ public class VistaNuevoController {
     private TextField stockTextField;
     
     private Componente componente;
+    private Stage escenarioNuevo; //Escenario de edición
+    private boolean guardarClicked = false;
    
      @FXML
     private void initialize() {
         
     }
     
-       @FXML
-    private void añadir() {
+    //Establece el escenario de edición
+    public void setEscenarioNuevo(Stage escenarioNuevo) {
+        this.escenarioNuevo = escenarioNuevo;
+    }
+    
+    public boolean isGuardarClicked() {
+        return guardarClicked;
+    }
+    
+    @FXML
+    private void anadir() {
          if (datosValidos()) {
             
             //Asigno datos a propiedades de persona
+            
+            System.out.println(fotoTextField.getText());
             componente.setFoto(fotoTextField.getText());
             componente.setNombre(nombreTextField.getText());
             componente.setPrecio(precioTextField.getText());
             componente.setStock(stockTextField.getText());
            
-
-          
-           // escenarioEdicion.close(); //Cierro el escenario de edición
+            guardarClicked = true; //Cambio valor booleano
+            escenarioNuevo.close(); //Cierro el escenario de edición
             
         }
+    }
+    
+     //LLamado cuando se pulsa Cancelar
+    @FXML
+    private void cancelar() {
+        escenarioNuevo.close();
     }
     
      //Validación de datos
