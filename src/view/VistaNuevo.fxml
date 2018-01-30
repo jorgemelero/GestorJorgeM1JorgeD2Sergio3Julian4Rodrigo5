@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="486.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VistaNuevoController">
    <children>
       <GridPane layoutX="14.0" layoutY="19.0" prefHeight="263.0" prefWidth="335.0">
         <columnConstraints>
@@ -40,7 +39,7 @@
       </GridPane>
       <HBox layoutX="284.0" layoutY="341.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <Button mnemonicParsing="false" text="Añadir" />
+            <Button mnemonicParsing="false" onAction="#añadir" text="Añadir" />
             <Button mnemonicParsing="false" text="Cancelar" />
          </children>
       </HBox>

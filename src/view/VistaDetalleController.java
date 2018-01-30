@@ -64,5 +64,9 @@ public class VistaDetalleController {
 //        fechaAltaLabel.setText(componente.getNombre());
 //        descripcionLabel.setText(componente.getNombre());
     }
+    @FXML
+    public void volver(){
+        escenarioDetalle.close();
+    }
 
 }
