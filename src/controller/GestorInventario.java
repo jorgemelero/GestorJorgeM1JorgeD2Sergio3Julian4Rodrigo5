@@ -131,7 +131,7 @@ public class GestorInventario extends Application {
 
         }
          Stage escenarioNuevo = new Stage();
-        escenarioNuevo.setTitle("Detalles");
+        escenarioNuevo.setTitle("Nuevo");
         escenarioNuevo.initModality(Modality.WINDOW_MODAL);
         escenarioNuevo.initOwner(escenarioPrincipal);
         Scene escena = new Scene(vistaNuevo);
