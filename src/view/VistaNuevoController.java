@@ -8,6 +8,7 @@ package view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import modelo.Componente;
 
@@ -18,7 +19,7 @@ import modelo.Componente;
 public class VistaNuevoController {
 
     @FXML
-    private TextField fotoTextField;
+    private ImageView foto;
     @FXML
     private TextField nombreTextField;
     @FXML
@@ -49,8 +50,8 @@ public class VistaNuevoController {
         if (datosValidos()) {
 
         //Asigno datos a propiedades de persona
-        System.out.println(fotoTextField.getText());
-        componente.setFoto(fotoTextField.getText());
+        //System.out.println(fotoTextField.getText());
+        componente.setFoto(foto);
         componente.setNombre(nombreTextField.getText());
         componente.setPrecio(precioTextField.getText());
         componente.setStock(stockTextField.getText());
@@ -77,9 +78,9 @@ public class VistaNuevoController {
         if (nombreTextField.getText() == null || nombreTextField.getText().length() == 0) {
             mensajeError += "Nombre no válido.\n";
         }
-        if (fotoTextField.getText() == null || fotoTextField.getText().length() == 0) {
-            mensajeError += "foto  no válidos.\n";
-        }
+        //if (fotoTextField.getText() == null || fotoTextField.getText().length() == 0) {
+        //    mensajeError += "foto  no válidos.\n";
+        //}
         if (precioTextField.getText() == null || precioTextField.getText().length() == 0) {
             mensajeError += "Dirección no válida.\n";
         }
