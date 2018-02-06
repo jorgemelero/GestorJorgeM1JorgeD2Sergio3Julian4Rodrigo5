@@ -10,15 +10,10 @@ import java.net.URL;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Componente;
@@ -122,7 +117,7 @@ public class GestorInventario extends Application {
 
     }
      
-    public void muestraNuevo(Componente componente){
+    public boolean muestraNuevo(Componente componente){
          FXMLLoader loader = new FXMLLoader();
         URL location = GestorInventario.class.getResource("../view/VistaNuevo.fxml");
         loader.setLocation(location);
@@ -140,7 +135,11 @@ public class GestorInventario extends Application {
         
         VistaNuevoController controller = loader.getController();
         controller.setEscenarioNuevo(escenarioNuevo);
+        controller.setComponente(componente);
+        //controller.isGuardarClicked();
         escenarioNuevo.showAndWait();
+        
+        return controller.isGuardarClicked();
     } 
      
     
