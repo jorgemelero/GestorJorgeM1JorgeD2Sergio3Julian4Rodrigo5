@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -35,12 +36,12 @@ public class GestorInventario extends Application {
 
     public GestorInventario() {
 
-          //datosComponente.add(new Componente(new ImageView("file:/img/gtx1080.jpg"), "Tarjeta grafica","500","20"));
-          datosComponente.add(new Componente("Foto1", "Caja", "50", "50"));
-          datosComponente.add(new Componente("Foto2", "Placa base", "150", "75"));
-          datosComponente.add(new Componente("Foto3", "Memoria ram", "100", "60"));
-          datosComponente.add(new Componente("Foto4", "Disco duro", "50", "150"));
-          datosComponente.add(new Componente("Foto5", "Tarjeta grafica", "200", "250"));
+          datosComponente.add(new Componente(new ImageView("/img/gtx1080.jpg"), "Tarjeta grafica","500","20"));
+//          datosComponente.add(new Componente("Foto1", "Caja", "50", "50"));
+//          datosComponente.add(new Componente("Foto2", "Placa base", "150", "75"));
+//          datosComponente.add(new Componente("Foto3", "Memoria ram", "100", "60"));
+//          datosComponente.add(new Componente("Foto4", "Disco duro", "50", "150"));
+//          datosComponente.add(new Componente("Foto5", "Tarjeta grafica", "200", "250"));
         
 
     }
