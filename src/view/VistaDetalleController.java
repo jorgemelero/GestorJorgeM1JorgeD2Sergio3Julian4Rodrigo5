@@ -8,6 +8,8 @@ package view;
 import controller.GestorInventario;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import modelo.Componente;
 
@@ -23,6 +25,8 @@ public class VistaDetalleController {
     private Label precioLabel;
     @FXML
     private Label stockLabel;
+    @FXML
+    private ImageView foto;
     @FXML
     private Label fechaModificacionLabel;
     @FXML
@@ -56,6 +60,7 @@ public class VistaDetalleController {
     public void setComponente(Componente componente){
         this.componente = componente;
         
+        foto.setImage(new Image("/img/gtx1080.jpg"));
         nombreLabel.setText(componente.getNombre());
         precioLabel.setText(componente.getPrecio());
         stockLabel.setText(componente.getStock());
@@ -64,6 +69,12 @@ public class VistaDetalleController {
 //        fechaAltaLabel.setText(componente.getNombre());
 //        descripcionLabel.setText(componente.getNombre());
     }
+    
+    @FXML
+    public void borrar(){
+        
+    }
+    
     @FXML
     public void volver(){
         escenarioDetalle.close();
