@@ -6,22 +6,11 @@
 package view;
 
 import controller.GestorInventario;
-import java.io.IOException;
-import java.net.URL;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import modelo.Componente;
 
 /**
@@ -106,13 +95,43 @@ public class VistaComponenteController {
     @FXML
     private void crearComponente(){
         Componente temporal = new Componente();
-        gestorInventario.muestraNuevo(temporal);
-        gestorInventario.getDatosComponente().add(temporal);
-        
-        
+        boolean guardarClicked = gestorInventario.muestraNuevo(temporal);
+        if(guardarClicked){
+            gestorInventario.getDatosComponente().add(temporal);
+        }
     }
     
+    @FXML
+    private void borrarComponente(){
+        int indiceSeleccionado = tablaComponente.getSelectionModel().getSelectedIndex();
+        if(indiceSeleccionado >= 0){
+        tablaComponente.getItems().remove(indiceSeleccionado);
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Atención");
+            alerta.setHeaderText("Persona no seleccionada");
+            alerta.setContentText("Por favor, selecciona persona de la tabla");
+            alerta.showAndWait();
+        }
+    }
     
-    
+    @FXML
+    private void editarComponente() {
+        Componente seleccionada = (Componente) tablaComponente.getSelectionModel().getSelectedItem();
+        if (seleccionada != null) {
+            boolean guardarClicked = gestorInventario.muestraEditarComponente(seleccionada);
+            if (guardarClicked) {
+                mostrarDetallesComponente(seleccionada);
+            }
 
+        } else {
+            //Muestro alerta
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Alerta");
+            alerta.setHeaderText("Persona no seleccionada");
+            alerta.setContentText("Por favor, selecciona una persona");
+            alerta.showAndWait();
+        }
+    }
+    
 }
