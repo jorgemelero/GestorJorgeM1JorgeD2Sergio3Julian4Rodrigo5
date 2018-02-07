@@ -10,17 +10,17 @@ import java.net.URL;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import modelo.Componente;
 import view.VistaComponenteController;
-import view.VistaDetalleController;
-import view.VistaNuevoController;
 
 /**
  *
@@ -32,21 +32,14 @@ public class GestorInventario extends Application {
     private Stage escenarioPrincipal;
     private BorderPane layoutPrincipal;
     private AnchorPane vistaInventario;
-    private AnchorPane vistaDetalle, vistaNuevo;
 
     public GestorInventario() {
-
-          datosComponente.add(new Componente(new ImageView("/img/gtx1080.jpg"), "Tarjeta grafica","500","20"));
-//          datosComponente.add(new Componente("Foto1", "Caja", "50", "50"));
-//          datosComponente.add(new Componente("Foto2", "Placa base", "150", "75"));
-//          datosComponente.add(new Componente("Foto3", "Memoria ram", "100", "60"));
-//          datosComponente.add(new Componente("Foto4", "Disco duro", "50", "150"));
-//          datosComponente.add(new Componente("Foto5", "Tarjeta grafica", "200", "250"));
+         datosComponente.add(new Componente("Jairo", "García Rincón","1","2"));
+        datosComponente.add(new Componente("Juan", "Pérez Martínez","2","5"));
         
 
     }
-
-    public ObservableList getDatosComponente() {
+     public ObservableList getDatosComponente() {
         return datosComponente;
     }
 
@@ -88,65 +81,13 @@ public class GestorInventario extends Application {
         }
         //añado a centro la vista persona
         layoutPrincipal.setCenter(vistaInventario);
-
+        
         VistaComponenteController controller = loader.getController();
         controller.setGestorInventario(this);
 
     }
     
-     public void muestraDetalle(Componente componente) {
-        FXMLLoader loader = new FXMLLoader();
-        URL location = GestorInventario.class.getResource("../view/VistaDetalle.fxml");
-        loader.setLocation(location);
-        try {
-            vistaDetalle = loader.load();
-        } catch (IOException ex) {
-
-        }
-        Stage escenarioDetalle = new Stage();
-        escenarioDetalle.setTitle("Detalles");
-        escenarioDetalle.initModality(Modality.WINDOW_MODAL);
-        escenarioDetalle.initOwner(escenarioPrincipal);
-        Scene escena = new Scene(vistaDetalle);
-        escenarioDetalle.setScene(escena);
-        
-
-        VistaDetalleController controller = loader.getController();
-        controller.setEscenarioDetalle(escenarioDetalle);
-        controller.setComponente(componente);
-        escenarioDetalle.showAndWait();
-
-    }
-     
-    public boolean muestraNuevo(Componente componente){
-         FXMLLoader loader = new FXMLLoader();
-        URL location = GestorInventario.class.getResource("../view/VistaNuevo.fxml");
-        loader.setLocation(location);
-          try {
-            vistaNuevo = loader.load();
-        } catch (IOException ex) {
-
-        }
-        Stage escenarioNuevo = new Stage();
-        escenarioNuevo.setTitle("Nuevo");
-        escenarioNuevo.initModality(Modality.WINDOW_MODAL);
-        escenarioNuevo.initOwner(escenarioPrincipal);
-        Scene escena = new Scene(vistaNuevo);
-        escenarioNuevo.setScene(escena); 
-        
-        VistaNuevoController controller = loader.getController();
-        controller.setEscenarioNuevo(escenarioNuevo);
-        controller.setComponente(componente);
-        //controller.isGuardarClicked();
-        escenarioNuevo.showAndWait();
-        
-        return controller.isGuardarClicked();
-    } 
-     
-    
-    
-
-    public Stage getPrimaryStage() {
+     public Stage getPrimaryStage(){
         return escenarioPrincipal;
     }
 
