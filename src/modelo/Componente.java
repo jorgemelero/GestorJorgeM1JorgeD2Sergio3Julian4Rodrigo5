@@ -5,12 +5,9 @@
  */
 package modelo;
 
-import java.time.LocalDate;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -19,45 +16,36 @@ import javafx.scene.image.ImageView;
  */
 public class Componente {
 
-    //private ImageView foto;
-    private final StringProperty foto;
+    private ImageView foto;
     private final StringProperty nombre;
     private final StringProperty precio;
     private final StringProperty stock;
+    private final String ruta;
     
     public Componente(){
-        this(null,null,null,null);
+        this(null,null,null,null,null);
     }
 
-    public Componente(String foto, String nombre, String precio, String stock) {
-        //this.foto = foto;
-        this.foto = new SimpleStringProperty(foto);
+    public Componente(ImageView foto, String nombre, String precio, String stock, String ruta) {
+        this.foto = (ImageView)foto;
         this.nombre = new SimpleStringProperty(nombre);
         this.precio = new SimpleStringProperty(precio);
         this.stock = new SimpleStringProperty(stock);
+        this.ruta = ruta;
 
     }
 
-//    public ImageView getFoto() {
-//        return foto;
-//    }
-//
-//    public void setFoto(ImageView foto) {
-//        this.foto = foto;
-//    }
-    
-    
-     public String getFoto() {
-        return foto.get();
+    public String getRuta() {
+        return ruta;
     }
 
-    public StringProperty fotoProperty() {
+    public ImageView getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
-        this.foto.set(foto);
-    }
+    public void setFoto(ImageView foto) {
+        this.foto = foto;
+    } 
     
     public String getNombre() {
         return nombre.get();
