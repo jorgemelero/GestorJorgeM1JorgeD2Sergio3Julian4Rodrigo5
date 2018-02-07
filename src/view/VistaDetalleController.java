@@ -60,7 +60,7 @@ public class VistaDetalleController {
     public void setComponente(Componente componente){
         this.componente = componente;
         
-        foto.setImage(new Image("/img/gtx1080.jpg"));
+        foto.setImage(new Image(componente.getRuta()));
         nombreLabel.setText(componente.getNombre());
         precioLabel.setText(componente.getPrecio());
         stockLabel.setText(componente.getStock());
