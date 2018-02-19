@@ -8,10 +8,15 @@ package view;
 import controller.GestorInventario;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import modelo.Componente;
+import util.Fechas;
+
+
 
 /**
  *
@@ -32,12 +37,13 @@ public class VistaDetalleController {
     @FXML
     private Label fechaAltaLabel;
     @FXML
-    private Label descripcionLabel;
+    private TextArea descripcionLabel;
 
     private GestorInventario gestorInventario;
     private Componente componente;
     private VistaComponenteController datos;
     private Stage escenarioDetalle;
+    private TableView tablaComponente;
 
    
      public VistaDetalleController() {
@@ -52,6 +58,11 @@ public class VistaDetalleController {
 //        stockLabel.setText(componente.getStock());
 //        gestorInventario.muestraDetalle();
     }
+    
+     public void setGestorInventario(GestorInventario gestorInventario) {
+
+        this.gestorInventario = gestorInventario;
+    }
   
     public void setEscenarioDetalle(Stage escenarioDetalle){
         this.escenarioDetalle = escenarioDetalle;
@@ -64,15 +75,15 @@ public class VistaDetalleController {
         nombreLabel.setText(componente.getNombre());
         precioLabel.setText(componente.getPrecio());
         stockLabel.setText(componente.getStock());
-        
-//        fechaModificacionLabel.setText(componente.getNombre());
-//        fechaAltaLabel.setText(componente.getNombre());
-//        descripcionLabel.setText(componente.getNombre());
+        fechaAltaLabel.setText(Fechas.formato(componente.getFechaAlta()));
+        fechaModificacionLabel.setText(Fechas.formato(componente.getFechaMod()));
+         descripcionLabel.setText(componente.getDescripcion());
     }
     
     @FXML
     public void borrar(){
-        
+
+        escenarioDetalle.close();
     }
     
     @FXML

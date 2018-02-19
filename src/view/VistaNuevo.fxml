@@ -30,18 +30,19 @@
             <Label text="Precio" GridPane.rowIndex="2" />
             <Label text="Stock" GridPane.rowIndex="3" />
             <Label text="Descripción" GridPane.rowIndex="4" />
-            <TextField prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" />
-            <TextField prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="nombreTextField" prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="precioTextField" prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="stockTextField" prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextArea fx:id="descripcion" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#ruta" prefHeight="25.0" prefWidth="167.0" text="Button" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <HBox layoutX="284.0" layoutY="341.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#añadir" text="Añadir" />
-            <Button mnemonicParsing="false" text="Cancelar" />
+            <Button mnemonicParsing="false" onAction="#anadir" text="Añadir" />
+            <Button mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
          </children>
       </HBox>
+      <TextField fx:id="fotoTextField" layoutX="349.0" layoutY="27.0" prefHeight="25.0" prefWidth="123.0" />
    </children>
 </AnchorPane>
