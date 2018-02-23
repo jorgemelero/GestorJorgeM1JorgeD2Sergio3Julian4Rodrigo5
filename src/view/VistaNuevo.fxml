@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VistaNuevoController">
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="486.0" styleClass="background" stylesheets="@../css/DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VistaNuevoController">
    <children>
       <GridPane layoutX="14.0" layoutY="19.0" prefHeight="263.0" prefWidth="335.0">
         <columnConstraints>
@@ -34,15 +34,14 @@
             <TextField fx:id="precioTextField" prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="stockTextField" prefHeight="31.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextArea fx:id="descripcion" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" onAction="#ruta" prefHeight="25.0" prefWidth="167.0" text="Button" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#ruta" prefHeight="25.0" prefWidth="167.0" text="Elegir foto" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <HBox layoutX="284.0" layoutY="341.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#anadir" text="Añadir" />
-            <Button mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#anadir" text="Añadir" />
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
          </children>
       </HBox>
-      <TextField fx:id="fotoTextField" layoutX="349.0" layoutY="27.0" prefHeight="25.0" prefWidth="123.0" />
    </children>
 </AnchorPane>

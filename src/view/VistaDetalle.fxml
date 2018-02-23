@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VistaDetalleController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="697.0" styleClass="background" stylesheets="@../css/DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VistaDetalleController">
    <children>
-      <GridPane layoutX="38.0" layoutY="23.0" prefHeight="293.0" prefWidth="402.0">
+      <GridPane layoutX="38.0" layoutY="23.0" prefHeight="293.0" prefWidth="402.0" styleClass="background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,7 +33,7 @@
             <Label text="Fecha de modificación" GridPane.rowIndex="3" />
             <Label text="Fecha alta" GridPane.rowIndex="4" />
             <Label text="Descripción" GridPane.rowIndex="5" />
-            <TextArea fx:id="descripcionLabel" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="descripcionLabel" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="textArea" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label fx:id="nombreLabel" text="Label" GridPane.columnIndex="1" />
             <Label fx:id="precioLabel" layoutX="211.0" layoutY="18.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="stockLabel" prefHeight="0.0" prefWidth="35.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -44,7 +44,6 @@
       <ImageView fx:id="foto" fitHeight="150.0" fitWidth="200.0" layoutX="475.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
       <HBox layoutX="414.0" layoutY="335.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" text="Editar" />
             <Button mnemonicParsing="false" onAction="#volver" text="Volver" />
          </children>
          <opaqueInsets>

@@ -5,25 +5,27 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VistaPrincipalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="709.0" stylesheets="@../css/DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VistaPrincipalController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Archivo">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#guardarComo" text="Guardar" />
-                  <MenuItem mnemonicParsing="false" onAction="#grafico" text="Grafico" />
-                  <MenuItem mnemonicParsing="false" onAction="#generarCodBarras" text="Barras" />
+              <MenuItem mnemonicParsing="false" onAction="#nuevo" text="Nuevo" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrir" text="Abrir" />
+                  <MenuItem mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+                  <MenuItem mnemonicParsing="false" onAction="#guardarComo" text="Guardar como" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Estadísticas">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#grafico" text="Grafico" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Acerca de">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#manual" text="Manual" />
+                  <MenuItem mnemonicParsing="false" onAction="#ruta" text="Descargar" />
             </items>
           </Menu>
         </menus>
