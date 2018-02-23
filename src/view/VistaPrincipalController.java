@@ -16,9 +16,14 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.Barcode39;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import javafx.stage.DirectoryChooser;
 import javax.swing.JOptionPane;
 import modelo.Componente;
 
@@ -27,19 +32,19 @@ import modelo.Componente;
  * @author Rodrigo
  */
 public class VistaPrincipalController {
-    
-        private GestorInventario gestorInventario;
-        VistaComponenteController vista = new VistaComponenteController();
-    
-      //Es llamado por la apliación principal para tener una referencia de vuelta de si mismo
+
+    private GestorInventario gestorInventario;
+    VistaComponenteController vista = new VistaComponenteController();
+
+    //Es llamado por la apliación principal para tener una referencia de vuelta de si mismo
     public void setGestorInventario(GestorInventario gestorInventario) {
 
         this.gestorInventario = gestorInventario;
     }
-    
-     @FXML
+
+    @FXML
     private void guardarComo() {
-        
+
         FileChooser fileChooser = new FileChooser();
 
         //Filtro para la extensión
@@ -49,50 +54,88 @@ public class VistaPrincipalController {
 
         //Muestro el diálogo de guardar
         File archivo = fileChooser.showSaveDialog(gestorInventario.getPrimaryStage());
-         System.out.println(archivo.getPath());
+        System.out.println(archivo.getPath());
 
         if (archivo != null) {
             //Me aseguro de que tiene la extensión correcta
             if (!archivo.getPath().endsWith(".xml")) {
                 archivo = new File(archivo.getPath() + ".xml");
             }
-            gestorInventario.guardaPersonas(archivo);
+            gestorInventario.guardaComponentes(archivo);
         }
     }
-    
-    @FXML
-    public void grafico(){
-    gestorInventario.crearGrafico();
-    }
-    
-    @FXML
-    public void generarCodBarras() throws DocumentException{
-        try {
-            String nombre = JOptionPane.showInputDialog(null,"Numero de etiquetas");
-            
 
-            Document doc = new Document();
-            PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream("cohhh.pdf"));
-            doc.open();
-            
-             Paragraph texto = new Paragraph();
-            texto.add("NIVIDIA GTX 1050ti");
-            texto.setAlignment(Element.ALIGN_JUSTIFIED);
-            
-            
-            Barcode39 code = new Barcode39();
-            
-            code.setCode("1234567890");
-            com.itextpdf.text.Image  img = code.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
-            
-            doc.add(texto);
-            doc.add(img);
-            
-            
-            
-            doc.close();
-            
-        } catch (FileNotFoundException ex) {
+    @FXML
+    private void nuevo() {
+        gestorInventario.getDatosComponente().clear();
+        gestorInventario.setRutaArchivoComponentes(null);
+    }
+
+    @FXML
+    private void abrir() {
+        FileChooser fileChooser = new FileChooser();
+
+        //Filtro para la extensión
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        //Muestro el diálogo de guardar
+        File archivo = fileChooser.showOpenDialog(gestorInventario.getPrimaryStage());
+
+        if (archivo != null) {
+            gestorInventario.cargaComponentes(archivo);
         }
     }
+
+    @FXML
+    private void guardar() {
+        File archivo = gestorInventario.getRutaArchivoComponetes();
+        if (archivo != null) {
+            gestorInventario.guardaComponentes(archivo);
+        } else {
+            guardarComo();
+        }
+    }
+
+    @FXML
+    private void manual() {
+        try {
+            File path = new File("src/manual.pdf");
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void ruta() {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File archivo = directoryChooser.showDialog(gestorInventario.getPrimaryStage());
+
+        File path = new File("src/manual.pdf");
+
+        byte[] contenido = null;
+        try {
+            contenido = Files.readAllBytes(Paths.get(path.getParent(), path.getName()));
+        } catch (IOException ex) {
+            System.out.println("error al leer");
+        }
+
+        System.out.println(archivo.getPath());
+        try {
+            Files.write(Paths.get(archivo.getAbsolutePath(), path.getName()), contenido);
+        } catch (IOException ex) {
+            System.out.println("error al escribir");
+        }
+
+        //fotoTextField.setText(ruta);
+        //return ruta;
+    }
+
+    @FXML
+    public void grafico() {
+        gestorInventario.crearGrafico();
+    }
+
 }
