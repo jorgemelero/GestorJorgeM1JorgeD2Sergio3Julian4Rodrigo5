@@ -5,7 +5,17 @@
  */
 package view;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.Barcode39;
+import com.itextpdf.text.pdf.PdfWriter;
 import controller.GestorInventario;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,6 +24,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.DirectoryChooser;
+import javax.swing.JOptionPane;
 import modelo.Componente;
 
 /**
@@ -57,7 +69,7 @@ public class VistaComponenteController {
         precioColumn.setCellValueFactory(new PropertyValueFactory<Componente, String>("precio"));
         stockColumn.setCellValueFactory(new PropertyValueFactory<Componente, String>("stock"));
         mostrarDetallesComponente(null);
-       
+
         tablaComponente.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> mostrarDetallesComponente((Componente) newValue));
 
@@ -80,12 +92,11 @@ public class VistaComponenteController {
     private void mostrarDetallesComponente(Componente componente) {
         Componente seleccionado = (Componente) tablaComponente.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
-              tablaComponente.setOnMouseClicked(event -> {
-        if (event.getClickCount() == 2 ) {
-           gestorInventario.muestraDetalle(seleccionado);
-        }
-    });
-            
+            tablaComponente.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    gestorInventario.muestraDetalle(seleccionado);
+                }
+            });
 
         }
 
@@ -101,9 +112,8 @@ public class VistaComponenteController {
 
     }
 
-    
-   @FXML
-    private void borrarPersona() {
+    @FXML
+    private void borrarComponentes() {
         //Capturo el indice seleccionado y borro su item asociado de la tabla
         int indiceSeleccionado = tablaComponente.getSelectionModel().getSelectedIndex();
         if (indiceSeleccionado >= 0) {
@@ -129,7 +139,7 @@ public class VistaComponenteController {
             alerta.showAndWait();
         }
     }
-    
+
     //Muestro el diálogo editar componente cuando el usuario hace clic en el botón de Editar
     @FXML
     private void editarComponente() {
@@ -147,6 +157,42 @@ public class VistaComponenteController {
             alerta.setHeaderText("Componente no seleccionada");
             alerta.setContentText("Por favor, selecciona un componente");
             alerta.showAndWait();
+        }
+    }
+
+    @FXML
+    private void Codigos() throws DocumentException {
+        try {
+            Componente seleccionada = (Componente) tablaComponente.getSelectionModel().getSelectedItem();
+            if (seleccionada != null) {
+                String numero = JOptionPane.showInputDialog(null, "Numero de etiquetas");
+                String nombre = JOptionPane.showInputDialog(null, "Nombre del archivo");
+                DirectoryChooser directoryChooser = new DirectoryChooser();
+                File archivo = directoryChooser.showDialog(gestorInventario.getPrimaryStage());
+                
+                Document doc = new Document();
+              
+                PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream(archivo + "/" + nombre + ".pdf"));
+                doc.open();
+
+                Paragraph texto = new Paragraph();
+                texto.add(seleccionada.getNombre());
+                texto.setAlignment(Element.ALIGN_JUSTIFIED);
+
+                Barcode39 code = new Barcode39();
+
+                code.setCode(String.valueOf(seleccionada.getCodigo()));
+                com.itextpdf.text.Image img = code.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
+                int copias = Integer.parseInt(numero);
+                for (int i = 0; i < copias; i++) {
+                    doc.add(texto);
+                    doc.add(img);
+                }
+
+                doc.close();
+            }
+
+        } catch (FileNotFoundException ex) {
         }
     }
 
