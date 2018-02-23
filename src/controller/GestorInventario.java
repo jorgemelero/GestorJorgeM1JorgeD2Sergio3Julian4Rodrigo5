@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package controller;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -47,13 +46,14 @@ public class GestorInventario extends Application {
     private Stage escenarioPrincipal;
     private BorderPane layoutPrincipal;
     private AnchorPane vistaInventario;
-    private AnchorPane vistaDetalle, vistaNuevo, editarComponente, vistaEstadisticas;
+    private AnchorPane vistaDetalle, vistaNuevo, editarComponente, vistaEstadisticas , vistaManual;
 
     public GestorInventario() {
-
-        datosComponente.add(new Componente(new ImageView("/img/gtx1080.jpg"), "Nvidia gtx 1080", "600", "230", "/img/gtx1080.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
-        datosComponente.add(new Componente(new ImageView("/img/cascos.jpg"), "Cascos Razer Proaso 7.1", "150", "60", "/img/cascos.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
-        datosComponente.add(new Componente(new ImageView("/img/grafica2.png"), "Nvidia gtx 1050 ti", "150", "620", "/img/grafica2.png", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
+        
+        //datosComponente.add(new Componente("Nvidia gtx 1080", "600", "230", "/img/gtx1080.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
+         datosComponente.add(new Componente(new ImageView("/img/gtx1080.jpg"), "Nvidia gtx 1080", "600", "230", "/img/gtx1080.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
+         datosComponente.add(new Componente(new ImageView("/img/cascos.jpg"), "Cascos Razer Proaso 7.1", "150", "60", "/img/cascos.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
+         datosComponente.add(new Componente(new ImageView("/img/grafica2.png"), "Nvidia gtx 1050 ti", "150", "620", "/img/grafica2.png", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
 //          datosComponente.add(new Componente(new ImageView("/img/grafica3.png"), "Nvidia gtx 1060","360","120", "/img/grafica3.png"));
 //          datosComponente.add(new Componente(new ImageView("/img/grafica4.png"), "AMD Rx580","350","120", "/img/grafica4.png"));
 //          datosComponente.add(new Componente(new ImageView("/img/grafica5.png"), "Nvidia gtx 170 ti","450","17", "/img/grafica5.png"));
@@ -77,11 +77,6 @@ public class GestorInventario extends Application {
 //          datosComponente.add(new Componente(new ImageView("/img/torre4.jpg"), "Phanteks Enthoo EvolV","189","77", "/img/torre4.jpg"));
 //          datosComponente.add(new Componente(new ImageView("/img/torre5.jpg"), "Cooler Master MasterCase Pro 5","159","86", "/img/torre5.jpg"));
 
-//          datosComponente.add(new Componente("Foto1", "Caja", "50", "50"));
-//          datosComponente.add(new Componente("Foto2", "Placa base", "150", "75"));
-//          datosComponente.add(new Componente("Foto3", "Memoria ram", "100", "60"));
-//          datosComponente.add(new Componente("Foto4", "Disco duro", "50", "150"));
-//          datosComponente.add(new Componente("Foto5", "Tarjeta grafica", "200", "250"));
     }
 
     public ObservableList getDatosComponente() {
@@ -102,7 +97,7 @@ public class GestorInventario extends Application {
     public void initLayoutPrincipal() {
         //cargar el layout principal mediante la vista principal 
         FXMLLoader loader = new FXMLLoader();
-        URL location = GestorInventario.class.getResource("../view/VistaPrincipal.fxml");
+        URL location = GestorInventario.class.getResource("/view/VistaPrincipal.fxml");
         loader.setLocation(location);
         try {
             layoutPrincipal = loader.load();
@@ -121,22 +116,22 @@ public class GestorInventario extends Application {
         escenarioPrincipal.show();
 
         //Intento cargar el último archivo abierto
-        File archivo = getRutaArchivoPersonas();
+        File archivo = getRutaArchivoComponetes();
         if (archivo != null) {
-            cargaPersonas(archivo);
+            cargaComponentes(archivo);
         }
     }
 
     public void muestraInventario() {
         FXMLLoader loader = new FXMLLoader();
-        URL location = GestorInventario.class.getResource("../view/VistaInventario.fxml");
+        URL location = GestorInventario.class.getResource("/view/VistaInventario.fxml");
         loader.setLocation(location);
         try {
             vistaInventario = loader.load();
         } catch (IOException ex) {
 
         }
-        //añado a centro la vista persona
+        //añado a centro la vista inventario
         layoutPrincipal.setCenter(vistaInventario);
 
         VistaComponenteController controller = loader.getController();
@@ -146,7 +141,7 @@ public class GestorInventario extends Application {
 
     public void muestraDetalle(Componente componente) {
         FXMLLoader loader = new FXMLLoader();
-        URL location = GestorInventario.class.getResource("../view/VistaDetalle.fxml");
+        URL location = GestorInventario.class.getResource("/view/VistaDetalle.fxml");
         loader.setLocation(location);
         try {
             vistaDetalle = loader.load();
@@ -169,7 +164,7 @@ public class GestorInventario extends Application {
 
     public boolean muestraNuevo(Componente componente) {
         FXMLLoader loader = new FXMLLoader();
-        URL location = GestorInventario.class.getResource("../view/VistaNuevo.fxml");
+        URL location = GestorInventario.class.getResource("/view/VistaNuevo.fxml");
         loader.setLocation(location);
         try {
             vistaNuevo = loader.load();
@@ -195,9 +190,9 @@ public class GestorInventario extends Application {
     //Vista editarComponente
     public boolean muestraEditarComponente(Componente componente) {
 
-        //Cargo la vista persona a partir de VistaPersona.fxml
+        //Cargo la vista nuevo a partir de VistaNuevo.fxml
         FXMLLoader loader = new FXMLLoader();
-        URL location = GestorInventario.class.getResource("../view/VistaNuevo.fxml");
+        URL location = GestorInventario.class.getResource("/view/VistaNuevo.fxml");
         loader.setLocation(location);
         try {
             editarComponente = loader.load();
@@ -214,7 +209,7 @@ public class GestorInventario extends Application {
         Scene escena = new Scene(editarComponente);
         escenarioEdicion.setScene(escena);
 
-        //Asigno el escenario de edición y la persona seleccionada al controlador
+        //Asigno el escenario de edición y el componente seleccionado al controlador
         VistaNuevoController controller = loader.getController();
         controller.setEscenarioNuevo(escenarioEdicion);
         controller.setComponente(componente);
@@ -228,7 +223,7 @@ public class GestorInventario extends Application {
     }
 
     //Obtengo la ruta del archivo de la preferencias de usuario en Java
-    public File getRutaArchivoPersonas() {
+    public File getRutaArchivoComponetes() {
 
         Preferences prefs = Preferences.userNodeForPackage(GestorInventario.class);
         String rutaArchivo = prefs.get("rutaArchivo", null);
@@ -241,7 +236,7 @@ public class GestorInventario extends Application {
     }
 
     //Guardo la ruta del archivo en las preferencias de usuario en Java
-    public void setRutaArchivoPersonas(File archivo) {
+    public void setRutaArchivoComponentes(File archivo) {
 
         Preferences prefs = Preferences.userNodeForPackage(GestorInventario.class);
         if (archivo != null) {
@@ -258,8 +253,8 @@ public class GestorInventario extends Application {
 
     }
 
-    //Cargo personas de un fichero
-    public void cargaPersonas(File archivo) {
+    //Cargo componentes de un fichero
+    public void cargaComponentes(File archivo) {
 
         try {
             //Contexto
@@ -271,10 +266,10 @@ public class GestorInventario extends Application {
 
             //Borro los anteriores
             datosComponente.clear();
-            datosComponente.addAll(empaquetador.getPersonas());
+            datosComponente.addAll(empaquetador.getComponentes());
 
             //Guardo la ruta del archivo al registro de preferencias
-            setRutaArchivoPersonas(archivo);
+            setRutaArchivoComponentes(archivo);
 
         } catch (Exception e) {
             //Muestro alerta
@@ -288,8 +283,8 @@ public class GestorInventario extends Application {
 
     }
 
-    //Guardo personas en un fichero
-    public void guardaPersonas(File archivo) {
+    //Guardo componentes en un fichero
+    public void guardaComponentes(File archivo) {
 
         try {
             //Contexto
@@ -297,15 +292,15 @@ public class GestorInventario extends Application {
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-            //Empaqueto los datos de las personas
+            //Empaqueto los datos de los componentes
             Empaquetador empaquetador = new Empaquetador();
-            empaquetador.setPersonas(datosComponente);
+            empaquetador.setComponentes(datosComponente);
 
             //Marshall y guardo XML a archivo
             m.marshal(empaquetador, archivo);
 
             //Guardo la ruta delk archivo en el registro
-            setRutaArchivoPersonas(archivo);
+            setRutaArchivoComponentes(archivo);
 
         } catch (Exception e) { // catches ANY exception
             //Muestro alerta
@@ -316,6 +311,7 @@ public class GestorInventario extends Application {
             alerta.showAndWait();
         }
     }
+    
 
     public void crearGrafico() {
 
@@ -324,7 +320,6 @@ public class GestorInventario extends Application {
         URL location = GestorInventario.class.getResource("/view/VistaEstadistica.fxml");
         loader.setLocation(location);
         try {
-            System.out.println("entro a las estadisticas");
             vistaEstadisticas = loader.load();
 
         } catch (IOException ex) {
@@ -349,6 +344,7 @@ public class GestorInventario extends Application {
         escenarioEstadisticas.show();
 
     }
+    
 
     public Stage getPrimaryStage() {
         return escenarioPrincipal;
@@ -357,5 +353,9 @@ public class GestorInventario extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    
+
+    
 
 }
