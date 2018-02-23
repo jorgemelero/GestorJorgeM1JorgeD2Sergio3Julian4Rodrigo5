@@ -8,6 +8,7 @@ package view;
 import controller.GestorInventario;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -31,8 +32,7 @@ import util.Fechas;
  */
 public class VistaNuevoController {
 
-    @FXML
-    private TextField fotoTextField;
+
     @FXML
     private TextField nombreTextField;
     @FXML
@@ -46,7 +46,7 @@ public class VistaNuevoController {
     private Stage escenarioNuevo; //Escenario de edición
     private boolean guardarClicked = false;
     private GestorInventario gestorInventario;
-    String ruta = "/img/";
+    String ruta = "" ;
 
     @FXML
     private void initialize() {
@@ -70,21 +70,26 @@ public class VistaNuevoController {
 
     @FXML
     private void anadir() {
-        System.out.println(ruta + " " + fotoTextField.getText());
+       // System.out.println(ruta + " " + fotoTextField.getText());
         if (datosValidos()) {
-
+            int numero = (int) (Math.random()*10000 + 5000);
             //Asigno datos a propiedades de persona
             LocalDate now = LocalDate.now();
             //String valor = ruta();
-            System.out.println(fotoTextField.getText());
-            componente.setFoto(new ImageView(ruta));
+            //System.out.println(fotoTextField.getText());
+            if(ruta.equals("")){
+                ruta = componente.getRuta();
+            }
+            componente.setRuta(ruta);
+            componente.setFoto(new ImageView(componente.getRuta()));
             componente.setNombre(nombreTextField.getText());
             componente.setPrecio(precioTextField.getText());
             componente.setStock(stockTextField.getText());
             componente.setFechaAlta(now);
             componente.setFechaMod(now);
+            componente.setCodigo(numero);
             componente.setDescripcion(descripcion.getText());
-            componente.setRuta(fotoTextField.getText());
+            
             guardarClicked = true; //Cambio valor booleano
             escenarioNuevo.close(); //Cierro el escenario de edición
 
@@ -118,7 +123,7 @@ public class VistaNuevoController {
             mensajeError += "Código postal no válido.\n";
         }
         if (mensajeError.length() == 0) {
-            System.out.println(ruta + " " + fotoTextField.getText());
+            //System.out.println(ruta + " " + fotoTextField.getText());
             return true;
         } else {
             //Muestro alerta y devuelvo false
@@ -136,7 +141,7 @@ public class VistaNuevoController {
     //Establece la componente a editar
     public void setComponente(Componente componente) {
         this.componente = componente;
-
+        
         nombreTextField.setText(componente.getNombre());
         precioTextField.setText(componente.getPrecio());
         stockTextField.setText(componente.getStock());
@@ -154,6 +159,9 @@ public class VistaNuevoController {
         //Muestro el diálogo de guardar
         File archivo = fileChooser.showOpenDialog(escenarioNuevo);
         //System.out.println(archivo.getParent());
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "JPG files (*.jpg)", "*.jpg");
+        fileChooser.getExtensionFilters().add(extFilter);
       
         byte [] contenido = null;
         try {
@@ -161,7 +169,9 @@ public class VistaNuevoController {
         } catch (IOException ex) {
             System.out.println("error al leer");
         }
-        File destino = new File("E:\\prueba2\\GestorJorgeM1JorgeD2Sergio3Julian4Rodrigo5-master\\src\\img");
+          URL location = GestorInventario.class.getResource("../img");
+        
+        File destino = new File(location.getFile());
         System.out.println(destino.getParent());
         //System.out.println(contenido);
         try {
@@ -170,7 +180,7 @@ public class VistaNuevoController {
             System.out.println("error al escribir");
         }
           ruta = "/img/" + archivo.getName();
-        fotoTextField.setText(ruta);
+        //fotoTextField.setText(ruta);
          //return ruta;
 
     }
