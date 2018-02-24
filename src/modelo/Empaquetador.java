@@ -16,15 +16,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "componente") //Define el nombre del elemento raíz XML
 public class Empaquetador {
     
-    private List<Componente> personas;
+    private List<Componente> componentes;
     
     @XmlElement(name = "Componente") //Opcional para el elemento especificado
-    public List<Componente> getPersonas(){
-        return personas;
+    public List<Componente> getComponentes(){
+        return componentes;
     }
     
-    public void setPersonas(List<Componente> personas){
-        this.personas = personas;
+    public void setComponentes(List<Componente> componentes){
+        this.componentes = componentes;
     }
     
 }
