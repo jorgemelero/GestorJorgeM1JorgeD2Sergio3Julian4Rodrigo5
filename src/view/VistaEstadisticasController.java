@@ -20,7 +20,7 @@ import modelo.Componente;
 
 /**
  *
- * @author Sergio
+ * @author Dam
  */
 public class VistaEstadisticasController {
     
@@ -28,6 +28,8 @@ public class VistaEstadisticasController {
 
     @FXML
     private BarChart<String, Integer> graficoBarras;
+    
+   
 
     @FXML
     private CategoryAxis ejeX;
@@ -53,6 +55,7 @@ public class VistaEstadisticasController {
 
         //Asigno los nombres de Componentes a categorías
         ejeX.setCategories((ObservableList<String>) producto);
+        ejeX.setTickLabelRotation(-90);
 
         //Etiquetas de los ejes
         ejeX.setLabel("Nombre Componente");
@@ -81,6 +84,8 @@ public class VistaEstadisticasController {
         for (int i = 0; i < numCant.length; i++) {
             series.getData().add(new XYChart.Data<>(producto.get(i), numCant[i]));
         }
+        
+       
 
         //Añado la serie al gráfico
         graficoBarras.getData().add(series);
