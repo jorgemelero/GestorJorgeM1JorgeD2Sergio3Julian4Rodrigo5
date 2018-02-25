@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 import java.io.File;
 import java.io.IOException;
@@ -52,30 +48,30 @@ public class GestorInventario extends Application {
         
         //datosComponente.add(new Componente("Nvidia gtx 1080", "600", "230", "/img/gtx1080.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
          datosComponente.add(new Componente(new ImageView("/img/gtx1080.jpg"), "Nvidia gtx 1080", "600", "230", "/img/gtx1080.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
-         datosComponente.add(new Componente(new ImageView("/img/cascos.jpg"), "Cascos Razer Proaso 7.1", "150", "60", "/img/cascos.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
-         datosComponente.add(new Componente(new ImageView("/img/grafica2.png"), "Nvidia gtx 1050 ti", "150", "620", "/img/grafica2.png", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 1"));
-//          datosComponente.add(new Componente(new ImageView("/img/grafica3.png"), "Nvidia gtx 1060","360","120", "/img/grafica3.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/grafica4.png"), "AMD Rx580","350","120", "/img/grafica4.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/grafica5.png"), "Nvidia gtx 170 ti","450","17", "/img/grafica5.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/placa1.png"), "Asus Z170","109","234", "/img/placa1.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/placa2.png"), "Asus Z270","300","127", "/img/placa2.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/placa3.png"), "MSI Gaming M5","185","257", "/img/placa3.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/placa4.png"), "MSI Gaming M7","320","120", "/img/placa4.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/placa5.png"), "Gigabyte Pro","170","220", "/img/placa5.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/procesador1.png"), "Intel I5 6600K","169","320", "/img/procesador1.png"));
-//          datosComponente.add(new Componente(new ImageView("/img/procesador2.jpg"), "Intel I7 7700K","299","220", "/img/procesador2.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/procesador3.jpg"), "Intel I3 5400","120","120", "/img/procesador3.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/procesador4.jpg"), "AMD Ryzen 5","240","154", "/img/procesador4.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/procesador5.jpg"), "AMD Ryzen 7","390","120", "/img/procesador5.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/raton1.jpg"), "Logitech Pro 12000 dpi","69","620", "/img/raton1.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/raton2.jpg"), "Razer Chroma","87","520", "/img/raton2.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/teclado1.jpg"), "Asus K120","180","120", "/img/teclado1.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/teclado2.jpg"), "Tacens gaming plus","49","150", "/img/teclado2.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/torre1.jpg"), "Corsair G800","199","70", "/img/torre1.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/torre2.jpg"), "NZXT H700I Mate","199","80", "/img/torre2.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/torre3.jpg"), "Thermaltake View 71","199","90", "/img/torre3.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/torre4.jpg"), "Phanteks Enthoo EvolV","189","77", "/img/torre4.jpg"));
-//          datosComponente.add(new Componente(new ImageView("/img/torre5.jpg"), "Cooler Master MasterCase Pro 5","159","86", "/img/torre5.jpg"));
+         datosComponente.add(new Componente(new ImageView("/img/cascos.jpg"), "Cascos Razer Proaso 7.1", "150", "60", "/img/cascos.jpg", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 2"));
+         datosComponente.add(new Componente(new ImageView("/img/grafica2.png"), "Nvidia gtx 1050 ti", "150", "620", "/img/grafica2.png", LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 3"));
+         datosComponente.add(new Componente(new ImageView("/img/grafica3.png"), "Nvidia gtx 1060","360","120", "/img/grafica3.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 4"));
+          datosComponente.add(new Componente(new ImageView("/img/grafica4.png"), "AMD Rx580","350","120", "/img/grafica4.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 5"));
+          datosComponente.add(new Componente(new ImageView("/img/grafica5.png"), "Nvidia gtx 170 ti","450","17", "/img/grafica5.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 6"));
+          datosComponente.add(new Componente(new ImageView("/img/placa1.png"), "Asus Z170","109","234", "/img/placa1.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 7"));
+          datosComponente.add(new Componente(new ImageView("/img/placa2.png"), "Asus Z270","300","127", "/img/placa2.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 8"));
+          datosComponente.add(new Componente(new ImageView("/img/placa3.png"), "MSI Gaming M5","185","257", "/img/placa3.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 9"));
+          datosComponente.add(new Componente(new ImageView("/img/placa4.png"), "MSI Gaming M7","320","120", "/img/placa4.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 10"));
+          datosComponente.add(new Componente(new ImageView("/img/placa5.png"), "Gigabyte Pro","170","220", "/img/placa5.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 11"));
+          datosComponente.add(new Componente(new ImageView("/img/procesador1.png"), "Intel I5 6600K","169","320", "/img/procesador1.png",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 12"));
+          datosComponente.add(new Componente(new ImageView("/img/procesador2.jpg"), "Intel I7 7700K","299","220", "/img/procesador2.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 13"));
+          datosComponente.add(new Componente(new ImageView("/img/procesador3.jpg"), "Intel I3 5400","120","120", "/img/procesador3.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 14"));
+          datosComponente.add(new Componente(new ImageView("/img/procesador4.jpg"), "AMD Ryzen 5","240","154", "/img/procesador4.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 15"));
+          datosComponente.add(new Componente(new ImageView("/img/procesador5.jpg"), "AMD Ryzen 7","390","120", "/img/procesador5.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 16"));
+          datosComponente.add(new Componente(new ImageView("/img/raton1.jpg"), "Logitech Pro 12000 dpi","69","620", "/img/raton1.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 17"));
+          datosComponente.add(new Componente(new ImageView("/img/raton2.jpg"), "Razer Chroma","87","520", "/img/raton2.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 18"));
+          datosComponente.add(new Componente(new ImageView("/img/teclado1.jpg"), "Asus K120","180","120", "/img/teclado1.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 19"));
+          datosComponente.add(new Componente(new ImageView("/img/teclado2.jpg"), "Tacens gaming plus","49","150", "/img/teclado2.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 20"));
+          datosComponente.add(new Componente(new ImageView("/img/torre1.jpg"), "Corsair G800","199","70", "/img/torre1.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 21"));
+          datosComponente.add(new Componente(new ImageView("/img/torre2.jpg"), "NZXT H700I Mate","199","80", "/img/torre2.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 22"));
+          datosComponente.add(new Componente(new ImageView("/img/torre3.jpg"), "Thermaltake View 71","199","90", "/img/torre3.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 23"));
+          datosComponente.add(new Componente(new ImageView("/img/torre4.jpg"), "Phanteks Enthoo EvolV","189","77", "/img/torre4.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 24"));
+          datosComponente.add(new Componente(new ImageView("/img/torre5.jpg"), "Cooler Master MasterCase Pro 5","159","86", "/img/torre5.jpg",LocalDate.of(2018, 2, 18), LocalDate.of(2018, 2, 18), 123, "Producto 25"));
 
     }
 
@@ -172,7 +168,7 @@ public class GestorInventario extends Application {
 
         }
         Stage escenarioNuevo = new Stage();
-        escenarioNuevo.setTitle("Nuevo");
+        escenarioNuevo.setTitle("Nuevo Componente");
         escenarioNuevo.initModality(Modality.WINDOW_MODAL);
         escenarioNuevo.initOwner(escenarioPrincipal);
         Scene escena = new Scene(vistaNuevo);
@@ -203,7 +199,7 @@ public class GestorInventario extends Application {
 //        
         //Creo el escenario de edición (con modal) y establezco la escena
         Stage escenarioEdicion = new Stage();
-        escenarioEdicion.setTitle("Editar Persona");
+        escenarioEdicion.setTitle("Editar Componente");
         escenarioEdicion.initModality(Modality.WINDOW_MODAL);
         escenarioEdicion.initOwner(escenarioPrincipal);
         Scene escena = new Scene(editarComponente);
@@ -312,9 +308,7 @@ public class GestorInventario extends Application {
         }
     }
     
-
     public void crearGrafico() {
-
         //Cargo la vista estadísticas
         FXMLLoader loader = new FXMLLoader();
         URL location = GestorInventario.class.getResource("/view/VistaEstadistica.fxml");
@@ -345,7 +339,6 @@ public class GestorInventario extends Application {
 
     }
     
-
     public Stage getPrimaryStage() {
         return escenarioPrincipal;
     }
@@ -353,9 +346,5 @@ public class GestorInventario extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    
-
-    
 
 }
